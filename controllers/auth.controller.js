@@ -146,7 +146,7 @@ exports.loginCustomer = asyncHandler(async (req, res) => {
     if (isError) {
         return res.status(400).json({ messsage: "All Feilds Required", error })
     }
-    if (!validator.isMobilePhone(customer.toString(), "en-IN")) {
+    if (!validator.isMobilePhone(mobile.toString(), "en-IN")) {
         return res.status(400).json({
             messsage: "Invalid Email Or Mobile",
             error: "Invalid Email Or Mobile"
