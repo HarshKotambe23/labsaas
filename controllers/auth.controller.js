@@ -155,7 +155,10 @@ exports.loginCustomer = asyncHandler(async (req, res) => {
         })
     }
     const isFound = await Customer.findOne({ mobile })
+    console.log(isFound);
+
     if (!isFound) {
+
         return res.status(400).json({
             messsage: "  Mobile is not Found",
             error: "  Mobile is not Found"

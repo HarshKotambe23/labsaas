@@ -36,6 +36,9 @@ const customerSchema = new mongoose.Schema({
     },
     blockResone: {
         type: String,
+    },
+    password: {
+        type: String,
     }
 
 }, { timestamps: true })
