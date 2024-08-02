@@ -142,7 +142,7 @@ exports.registerCustomer = asyncHandler(async (req, res) => {
 })
 exports.loginCustomer = asyncHandler(async (req, res) => {
     const { mobile, password } = req.body
-    const { isError, error } = checkEmpty({ customer, password })
+    const { isError, error } = checkEmpty({ mobile, password })
     if (isError) {
         return res.status(400).json({ messsage: "All Feilds Required", error })
     }
