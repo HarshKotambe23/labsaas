@@ -56,20 +56,20 @@ exports.employeeProtected = (req, res, next) => {
     })
 
 }
-exports.customerProtected = (req, res, next) => {
-    const customer = req.cookies.customer
-    if (!customer) {
-        return res.status(401).json({ message: "No cookie found" })
-    }
-    jwt.verify(customer, process.env.JWT_KEY, (err, decode) => {
-        if (err) {
-            return res.status(500).json({ message: err.message || "Invalid Token" })
-        }
-        req.user = decode.userId
-        next()
-    })
+// exports.customerProtected = (req, res, next) => {
+//     const customer = req.cookies.customer
+//     if (!customer) {
+//         return res.status(401).json({ message: "No cookie found" })
+//     }
+//     jwt.verify(customer, process.env.JWT_KEY, (err, decode) => {
+//         if (err) {
+//             return res.status(500).json({ message: err.message || "Invalid Token" })
+//         }
+//         req.user = decode.userId
+//         next()
+//     })
 
-}
+// }
 exports.doctorProtected = (req, res, next) => {
     const doctor = req.cookies.doctor
     if (!doctor) {
