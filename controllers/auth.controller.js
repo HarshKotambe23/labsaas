@@ -171,7 +171,7 @@ exports.loginCustomer = asyncHandler(async (req, res) => {
             error: " Invalid Credentials"
         })
     }
-    const token = jwt.sign({ customer: isFound._id },
+    const token = jwt.sign({ userId: isFound._id },
         process.env.JWT_KEY,
         { expiresIn: process.env.JWT_CITY_ADMIN_EXPIRE })
 
