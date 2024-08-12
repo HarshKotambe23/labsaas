@@ -16,6 +16,10 @@ exports.getCustomerPackageDetails = asyncHandler(async (req, res) => {
         qna: qnaResult
     })
 })
+exports.getAllCities = asyncHandler(async (req, res) => {
+    const result = await City.find()
+    return res.json({ messsage: "Doctors City Fetch Successfully", result })
+})
 
 
 // FETCH ALL ACTIVE CUSTOMER PACKAGES
