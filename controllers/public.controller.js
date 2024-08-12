@@ -1,6 +1,7 @@
 const asyncHandler = require("express-async-handler")
 const CustomerPackages = require("../models/CustomerPackages")
 const QnA = require("../models/QnA")
+const City = require("../models/City")
 
 exports.getAllCustomerPackage = asyncHandler(async (req, res) => {
     const result = await CustomerPackages.find({ active: true }).populate("company")
@@ -18,7 +19,7 @@ exports.getCustomerPackageDetails = asyncHandler(async (req, res) => {
 })
 exports.getAllCities = asyncHandler(async (req, res) => {
     const result = await City.find()
-    return res.json({ messsage: "Doctors City Fetch Successfully", result })
+    return res.json({ messsage: "City Fetch Successfully", result })
 })
 
 
