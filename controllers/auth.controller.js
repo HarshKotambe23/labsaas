@@ -387,6 +387,8 @@ exports.logout = asyncHandler(async (req, res) => {
 //OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
 exports.continueWithGoogle = asyncHandler(async (req, res) => {
     const { credential } = req.body
+    console.log(req.body);
+
     const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID)
     const verify = await client.verifyIdToken({ idToken: credential })
     if (!verify) {

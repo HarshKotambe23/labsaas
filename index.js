@@ -27,7 +27,7 @@ app.use("/api/v1/auth", require("./routes/auth.route"))
 app.use("/api/v1/public", require("./routes/public.route"))
 app.use("/api/v1/employee", employeeProtected, require("./routes/employee.route"))
 // app.use("/api/v1/customer", customerProtected, require("./routes/customer.route"))
-app.use("/api/v1/customer", require("./routes/customer.route"))
+app.use("/api/v1/customer", customerProtected, require("./routes/customer.route"))
 app.use("/api/v1/medical", medicalProtected, require("./routes/medical.route"))
 app.use("/api/v1/doctor", doctorProtected, require("./routes/doctor.route"))
 

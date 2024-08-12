@@ -103,8 +103,10 @@ exports.fetchOrders = asyncHandler(async (req, res) => {
 })
 exports.placeOrder = asyncHandler(async (req, res) => {
     const { package, location, city, schedule, time, newAddress } = req.body
+    // const { package } = req.body
     const customer = req.user
     const { isError, error } = checkEmpty({ customer, package, location, city, schedule, time })
+    // const { isError, error } = checkEmpty({ customer, package })
     if (isError) {
         return res.status(400).json({ messsage: "All Feilds Required", error })
     }
@@ -124,6 +126,7 @@ exports.placeOrder = asyncHandler(async (req, res) => {
     <p>Your Order Details are  ${package}</p>
     `})
     await Orders.create({ customer, package, location, city, schedule, time })
+    // await Orders.create({ customer, package })
     return res.json({ messsage: "Customer Orders Placed Successfully" })
 })
 exports.fetchCustomerAddress = asyncHandler(async (req, res) => {
