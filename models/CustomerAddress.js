@@ -5,16 +5,14 @@ const customerAddressSchema = mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: "customer",
     },
-    // customer: {
-    //     type: String,
-    // required: true,
-    // },
     location: {
         type: String,
         required: true,
+        required: true,
     },
     city: {
-        type: String,
+        type: mongoose.Types.ObjectId,
+        ref: "city",
         required: true,
     },
 })

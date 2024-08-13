@@ -123,8 +123,8 @@ exports.placeOrder = asyncHandler(async (req, res) => {
     if (result.email) {
         await sendEmail({
             to: result.email, subject: "Welcome to Lab SAAS", message: `
-    <h1>${result.name},Welcome to Lab SAAS</h1>
-    <p>Your Order Details are  ${package}</p>
+            <h1>${result.name},Welcome to Lab SAAS</h1> 
+            <p>Your Order Details are  ${package}</p>
     `})
     }
     await Orders.create({ customer, package, location, city, schedule, time })
@@ -132,7 +132,7 @@ exports.placeOrder = asyncHandler(async (req, res) => {
     return res.json({ messsage: "Customer Orders Placed Successfully" })
 })
 exports.fetchCustomerAddress = asyncHandler(async (req, res) => {
-    const result = await CustomerAddress.find({ customer: req.user }).populate("customer")
+    const result = await CustomerAddress.find({ customer: req.user }).populate("customer").populate("city")
     return res.json({ messsage: "Fetch Orders Success", result })
 })
 exports.rescheduleOrder = asyncHandler(async (req, res) => {
