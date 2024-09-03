@@ -10,5 +10,6 @@ router
     .get("/fetch-customer-package-details/:packageId", publicController.getCustomerPackageDetails)
     .get("/get-all-cities", publicController.getAllCities)
     .get("/get-all-companies", publicController.getAllCompanies)
+    .get("/get-all-companyPackages/:companyId", publicController.getAllCompanyPackages)
 
 module.exports = router

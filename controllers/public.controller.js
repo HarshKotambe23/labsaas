@@ -23,8 +23,14 @@ exports.getAllCities = asyncHandler(async (req, res) => {
     return res.json({ messsage: "City Fetch Successfully", result })
 })
 exports.getAllCompanies = asyncHandler(async (req, res) => {
+
     const result = await Company.find()
     return res.json({ messsage: "Company Fetch Successfully", result })
+})
+exports.getAllCompanyPackages = asyncHandler(async (req, res) => {
+    const { companyId } = req.params
+    const result = await CustomerPackages.findOne({ company: companyId }).populate("company")
+    return res.json({ messsage: "CompanyPackages Fetch Successfully", result })
 })
 
 
