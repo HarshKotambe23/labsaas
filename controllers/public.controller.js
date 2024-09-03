@@ -24,7 +24,7 @@ exports.getAllCities = asyncHandler(async (req, res) => {
 })
 exports.getAllCompanies = asyncHandler(async (req, res) => {
     const result = await Company.find()
-    return res.json({ messsage: "City Fetch Successfully", result })
+    return res.json({ messsage: "Company Fetch Successfully", result })
 })
 
 
