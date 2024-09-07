@@ -17,6 +17,10 @@ const customerPackageSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    test: {
+        type: [String],
+        required: true,
+    },
     company: {
         type: mongoose.Types.ObjectId,
         ref: "company",
