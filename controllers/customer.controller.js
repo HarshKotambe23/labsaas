@@ -8,7 +8,7 @@ const Customer = require("../models/Customer")
 const CustomerAddress = require("../models/CustomerAddress")
 const MedicalOrder = require("../models/MedicalOrder")
 const Medical = require("../models/Medical")
-const { medicalImageUpload } = require("../utils/upload")
+const { medicalImageUpload, customerAvatarUpload } = require("../utils/upload")
 
 
 exports.fetchOrders = asyncHandler(async (req, res) => {
@@ -221,3 +221,34 @@ exports.addMedicalOder = asyncHandler(async (req, res) => {
         res.status(201).json({ message: "add medcial precetion create success" })
     })
 })
+
+//
+
+exports.fetchCustomerDetails = asyncHandler(async (req, res) => {
+    const result = await Customer.findById(req.user)
+    console.log(req.user);
+    console.log(result);
+
+    return res.json({ messsage: "Fetch Customer Success", result })
+})
+exports.updateCustomerDetails = asyncHandler(async (req, res) => {
+    customerAvatarUpload(req, res, async err => {
+
+        const { name, email } = req.body
+        const query = {}
+        if (name) {
+            query.name = name
+        }
+        if (email) {
+            query.email = email
+        }
+        if (req.file) {
+
+        }
+        else {
+            await Customer.findByIdAndUpdate(req.user, query)
+        }
+        return res.json({ messsage: "Customer Details Update Success" })
+    })
+})
+

@@ -16,5 +16,9 @@ router
     .put("/cancel-Medical-Order/:medicalId", customerController.cancelMedicalOrder)
     .post("/add-Medical-Order", customerController.addMedicalOder)
 
+    // CUSTOMER
+    .get("/fetch-customer-details", customerController.fetchCustomerDetails)
+    .post("/update-customer-details", customerController.updateCustomerDetails)
+
 
 module.exports = router

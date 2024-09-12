@@ -9,12 +9,19 @@ const logoStorage = multer.diskStorage({
         const fn = uuid() + ext
         cb(null, fn)
     },
-    destination: (req, file, cb) => {
-        const dest = "uploads/logo"
-        if (!fs.existsSync(dest)) {
-            fs.mkdirSync(dest, { recursive: true })
-        }
-        cb(null, dest)
+    // destination: (req, file, cb) => {
+    //     const dest = "uploads/logo"
+    //     if (!fs.existsSync(dest)) {
+    //         fs.mkdirSync(dest, { recursive: true })
+    //     }
+    //     cb(null, dest)
+    // }
+})
+const customerAvatarStorage = multer.diskStorage({
+    filename: (req, file, cb) => {
+        const ext = path.extname(file.originalname)
+        const fn = uuid() + ext
+        cb(null, fn)
     }
 })
 const heroStorage = multer.diskStorage({
@@ -23,13 +30,8 @@ const heroStorage = multer.diskStorage({
         const fn = uuid() + ext
         cb(null, fn)
     },
-    destination: (req, file, cb) => {
-        const dest = "uploads/package"
-        if (!fs.existsSync(dest)) {
-            fs.mkdirSync(dest, { recursive: true })
-        }
-        cb(null, dest)
-    }
+
+
 })
 
 const labAvatarStorage = multer.diskStorage({
@@ -97,4 +99,14 @@ const doctorSpecialityUpload = multer({ storage: doctorSpecialityStorage }).sing
 // mutipleimages
 const medicalImageUpload = multer({ storage: medicalImageStorage }).array("image", 5)
 
-module.exports = { logoUpload, heroUpload, labAvatarUpload, doctorAvatarUpload, doctorSpecialityUpload, medicalImageUpload } 
+const customerAvatarUpload = multer({ storage: customerAvatarStorage }).single("avatar")
+module.exports = {
+    logoUpload,
+    heroUpload,
+    labAvatarUpload,
+    doctorAvatarUpload,
+    doctorSpecialityUpload,
+    medicalImageUpload,
+    customerAvatarUpload,
+
+} 
