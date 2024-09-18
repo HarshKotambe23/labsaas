@@ -32,14 +32,13 @@ exports.getAllCompanyPackages = asyncHandler(async (req, res) => {
     const result = await CustomerPackages.find({ company: companyId, active: true }).populate("company")
     return res.json({ messsage: "CompanyPackages Fetch Successfully", result })
 })
+exports.handleSearch = asyncHandler(async (req, res) => {
+    const result = await CustomerPackages.find({
+        $or: [
+            { name: { $regex: req.query.term, $options: "i" } },
+            { test: { $regex: req.query.term, $options: "i" } },
+        ]
 
-
-// FETCH ALL ACTIVE CUSTOMER PACKAGES
-// FETCH ALL ACTIVE CUSTOMER PACKAGES DETAILS (packageId)
-
-// public route
-// entry
-//public Api
-// store entry
-// print on home page
-
+    })
+    return res.json({ messsage: "City Fetch Successfully", result })
+})
