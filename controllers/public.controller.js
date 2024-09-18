@@ -40,5 +40,5 @@ exports.handleSearch = asyncHandler(async (req, res) => {
         ]
 
     })
-    return res.json({ messsage: "City Fetch Successfully", result })
+    return res.json({ messsage: "Search Successfull", result })
 })
